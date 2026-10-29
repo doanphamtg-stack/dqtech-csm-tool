@@ -1,0 +1,19 @@
+name: Build Windows tool
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile from public source
+        shell: powershell
+        run: ./build.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DQTech-CSM-Tool-unsigned
+          path: out/DQTech-CSM-Tool.exe
+          if-no-files-found: error
