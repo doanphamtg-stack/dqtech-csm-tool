@@ -1,0 +1,6 @@
+out/
+*.pfx
+*.key
+*.bin
+*.zip
+*.exe
